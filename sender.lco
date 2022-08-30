@@ -1,0 +1,10 @@
+\ProvidesFile{sender.lco}[Custom Sender Information]
+%
+\newcommand{\scilifelabFirstname}{Matthias}
+\newcommand{\scilifelabLastname}{Zepper}
+\newcommand{\scilifelabStreet}{Beispielweg~23\,a}
+\newcommand{\scilifelabPostalcode}{12345}
+\newcommand{\scilifelabCity}{Köln}
+\newcommand{\scilifelabPhone}{+49~123~5279143}
+\newcommand{\scilifelabEmail}{max@mustermann.de}
+\newcommand{\scilifelabReference}{max@mustermann.de}

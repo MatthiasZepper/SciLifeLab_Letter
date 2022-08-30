@@ -1,0 +1,138 @@
+\ProvidesFile{scilifelabletter.lco}[scrlttr2 customization for SciLifeLab-themed letter]
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+
+%---------------------------------------------------------------------------
+% Font and Typefaces
+%---------------------------------------------------------------------------
+\usepackage{baskervald}
+\usepackage{lato}
+
+\DeclareRobustCommand\ebseries{\fontseries{eb}\selectfont}
+\DeclareRobustCommand\sbseries{\fontseries{sb}\selectfont}
+\DeclareRobustCommand\ltseries{\fontseries{l}\selectfont}
+\DeclareRobustCommand\clseries{\fontseries{cl}\selectfont}
+
+\DeclareTextFontCommand{\texteb}{\ebseries}
+\DeclareTextFontCommand{\textsb}{\sbseries}
+\DeclareTextFontCommand{\textlt}{\ltseries}
+\DeclareTextFontCommand{\textcl}{\clseries}
+
+\usepackage{ragged2e}
+\RaggedRight{}            	% Flattersatz
+
+\linespread{1.125}           % Zeilenabstand
+\usepackage{microtype}    	% Kleinere Schriftsatzoptimierungen, vollständig nur mit pdfLaTeX
+\usepackage{ellipsis}       % Leerraumoptimierung
+\usepackage{xcolor}         % Farben für eigenes Layout
+\usepackage{marvosym}       % Icons für eigenes Layout
+\usepackage{graphicx}		% embed Logo 
+
+%---------------------------------------------------------------------------
+% Layout
+%---------------------------------------------------------------------------
+\KOMAoptions{
+enlargefirstpage=true,
+DIV=calc,           % Optimiert Verhältnis zwischen Text und Whitespace mit DIV=calc, A4 default=10
+fontsize=12,        % 12 ist scrlttr2-Standard
+parskip=half,       % Absätze mit Leerzeile ohne Einrückung
+backaddress=plain,  % Rücksendeadresse nicht unterstrichen
+foldmarks=off,		% Keine Faltmarken
+fromlogo=true    	% display SciLifeLab Logo
+}
+
+%---------------------------------------------------------------------------
+% Sender Information
+%---------------------------------------------------------------------------
+\LoadLetterOption{sender}						% Loads sender info from external file sender.lco
+
+%
+% Sender, generated from external data
+%
+\setkomavar{fromname}{\scilifelabFirstname{}~\scilifelabLastname{}}               % Name
+\setkomavar{fromaddress}{\scilifelabStreet{}\\{}\scilifelabPostalcode{}~\scilifelabCity{}} % Adresse
+\setkomavar{fromphone}{\scilifelabPhone{}}                           	% Telefonnummer
+\setkomavar{fromemail}{\scilifelabEmail{}}                            	% E-Mail-Adresse
+\setkomavar{place}{\scilifelabCity{}}                                 	% Ort
+\setkomavar{backaddressseparator}{,~}                        	% Trennung der Rücksendeadressbestandteile statt ","
+\setkomavar{signature}{}										% Removes Name after closing
+
+\renewcommand*{\raggedsignature}{\raggedright}  % Signatur wird bündig gesetzt
+\@setplength{sigbeforevskip}{0em}           	% Keine Leerzeile zwischen Gruß und Signature
+
+
+%---------------------------------------------------------------------------
+% Colors inspired by moderncv
+%---------------------------------------------------------------------------
+\definecolor{color0}{rgb}{0,0,0}             % Schwarz (normale Schrift)
+\definecolor{color2}{rgb}{0.45,0.45,0.45}    % Dunkles Grau (zum Abheben)
+
+%---------------------------------------------------------------------------
+% Custom Letter Head
+%---------------------------------------------------------------------------
+
+\setkomavar{fromlogo}{\includegraphics[height=1cm]{./scilifelabletter.png}}
+
+\setkomavar{firsthead}{
+\begin{flushright}
+{
+\begin{tabular}[c]{@{}l}
+    \usekomavar{fromlogo}
+\end{tabular}%
+	\Huge%
+	\textsb{%
+	\color{color2!50}\scilifelabFirstname{}~\color{color2}\scilifelabLastname{}%
+}}\\\vspace{0.1cm}%
+{
+\color{color2}\scilifelabStreet{}~|~\scilifelabPostalcode{}~\scilifelabCity{}%
+}
+\end{flushright}
+}
+%
+\setkomavar{location}{
+\begin{flushright}
+
+\color{color0}
+\@ifundefined{scilifelabReference}{}{Kundennr.\,:~\scilifelabReference{}\\}%
+
+\end{flushright}
+}
+%
+\setkomavar{firstfoot}{
+\vspace{-1cm}%
+\begin{flushright}%
+\color{color2}%
+\@ifundefined{scilifelabPhone}{}{~|~\Mobilefone~\scilifelabPhone{}}%
+\@ifundefined{scilifelabEmail}{}{~|~\Letter~\scilifelabEmail{}}%
+\end{flushright}%
+}
+
+%---------------------------------------------------------------------------
+% PDF Metadata
+%---------------------------------------------------------------------------
+\usepackage{hyperref}
+
+% Prevent pdfTeX from writing PDF Default Metadata like a Banner
+% See https://tex.stackexchange.com/a/313605
+% \pdfinfoomitdate=1
+% \pdftrailerid{}
+% \pdfsuppressptexinfo=-1
+
+\AtBeginLetter{{
+
+	\usekomavar[\def\pdfAuthor]{fromname}
+	\usekomavar[\def\pdfSubject]{subject}
+
+	\hypersetup{
+		pdftitle	= {Brief},
+		pdfauthor   = {\pdfAuthor},
+		pdfsubject	= {\pdfSubject},
+		pdfkeywords = {%
+			\@ifundefined{scilifelabReference}{}{Ref.\,:~\scilifelabReference{}~}%
+		},
+% 		pdfcreator	= {LaTeX},
+% 		pdfproducer	= {LaTeX}
+	}
+}}
