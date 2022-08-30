@@ -1,12 +1,12 @@
 \ProvidesFile{sender.lco}[Custom Sender Information]
 %
-\newcommand{\scilifelabFirstname}{Matthias}
-\newcommand{\scilifelabLastname}{Zepper}
+\newcommand{\scilifelabFirstname}{Bamse}
+\newcommand{\scilifelabLastname}{Brunbjörn}
 \newcommand{\scilifelabPrefix}{Dr.}
 \newcommand{\scilifelabSuffix}{}
 \newcommand{\scilifelabPosition}{Bioinformatician}
 \newcommand{\scilifelabAffiliation}{Applications Development}
-\newcommand{\scilifelabDepartment}{National Genomics Infrastructure}
+\newcommand{\scilifelabDepartment}{Höga Berget högskolan}
 \newcommand{\scilifelabFloor}{Alfa~3}
 \newcommand{\scilifelabVisitingAddress}{Tomtebodavägen 23A}
 \newcommand{\scilifelabVisitingPostalcode}{171 65}
@@ -14,9 +14,9 @@
 \newcommand{\scilifelabDeliveryAddress}{Box 1031}
 \newcommand{\scilifelabDeliveryPostalcode}{171 21}
 \newcommand{\scilifelabDeliveryCity}{Solna}
-\newcommand{\scilifelabPhone}{+46-79-3511959}
-\newcommand{\scilifelabMobile}{+46-79-3511959}
-\newcommand{\scilifelabEmail}{matthias.zepper@scilifelab.se}
+\newcommand{\scilifelabPhone}{+46-00-0000000}
+\newcommand{\scilifelabMobile}{+46-00-000000}
+\newcommand{\scilifelabEmail}{bamse@scilifelab.se}
 \newcommand{\scilifelabWeb}{www.scilifelab.se}
 \newcommand{\scilifelabLogo}{scilifelablogo.png}
 %\newcommand{\scilifelabSecondaryLogo}{ngilogo.png}
