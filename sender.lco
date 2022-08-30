@@ -8,3 +8,5 @@
 \newcommand{\scilifelabPhone}{+49~123~5279143}
 \newcommand{\scilifelabEmail}{max@mustermann.de}
 \newcommand{\scilifelabReference}{max@mustermann.de}
+\newcommand{\scilifelabLogo}{scilifelablogo.png}
+\newcommand{\scilifelabSecondaryLogo}{ngilogo.png}

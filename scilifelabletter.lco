@@ -73,15 +73,14 @@ fromlogo=true    	% display SciLifeLab Logo
 % Custom Letter Head
 %---------------------------------------------------------------------------
 
-\setkomavar{fromlogo}{\includegraphics[height=1cm]{./scilifelabletter.png}}
+\setkomavar{fromlogo}{\includegraphics[height=1.3cm]{\scilifelabLogo}}%
 
 \setkomavar{firsthead}{
 \begin{flushright}
 {
-\begin{tabular}[c]{@{}l}
-    \usekomavar{fromlogo}
-\end{tabular}%
-	\Huge%
+\usekomavar{fromlogo}
+\hfill
+\@ifundefined{scilifelabSecondaryLogo}{}{\includegraphics[height=1.5cm]{\scilifelabSecondaryLogo}\\}%
 	\textsb{%
 	\color{color2!50}\scilifelabFirstname{}~\color{color2}\scilifelabLastname{}%
 }}\\\vspace{0.1cm}%
