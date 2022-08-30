@@ -2,11 +2,23 @@
 %
 \newcommand{\scilifelabFirstname}{Matthias}
 \newcommand{\scilifelabLastname}{Zepper}
-\newcommand{\scilifelabStreet}{Beispielweg~23\,a}
-\newcommand{\scilifelabPostalcode}{12345}
-\newcommand{\scilifelabCity}{Köln}
-\newcommand{\scilifelabPhone}{+49~123~5279143}
-\newcommand{\scilifelabEmail}{max@mustermann.de}
-\newcommand{\scilifelabReference}{max@mustermann.de}
+\newcommand{\scilifelabPrefix}{Dr.}
+\newcommand{\scilifelabSuffix}{}
+\newcommand{\scilifelabPosition}{Bioinformatician}
+\newcommand{\scilifelabAffiliation}{Applications Development}
+\newcommand{\scilifelabDepartment}{National Genomics Infrastructure}
+\newcommand{\scilifelabFloor}{Alfa~3}
+\newcommand{\scilifelabVisitingAddress}{Tomtebodavägen 23A}
+\newcommand{\scilifelabVisitingPostalcode}{171 65}
+\newcommand{\scilifelabVisitingCity}{Solna}
+\newcommand{\scilifelabDeliveryAddress}{Box 1031}
+\newcommand{\scilifelabDeliveryPostalcode}{171 21}
+\newcommand{\scilifelabDeliveryCity}{Solna}
+\newcommand{\scilifelabPhone}{+46-79-3511959}
+\newcommand{\scilifelabMobile}{+46-79-3511959}
+\newcommand{\scilifelabEmail}{matthias.zepper@scilifelab.se}
+\newcommand{\scilifelabWeb}{www.scilifelab.se}
 \newcommand{\scilifelabLogo}{scilifelablogo.png}
-\newcommand{\scilifelabSecondaryLogo}{ngilogo.png}
+%\newcommand{\scilifelabSecondaryLogo}{ngilogo.png}
+
+\newcommand{\scilifelabReference}{max@mustermann.de}

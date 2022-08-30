@@ -2,23 +2,25 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[ngerman]{babel}
+\usepackage[english]{babel}
 
 %---------------------------------------------------------------------------
 % Font and Typefaces
 %---------------------------------------------------------------------------
-\usepackage{baskervald}
-\usepackage{lato}
 
-\DeclareRobustCommand\ebseries{\fontseries{eb}\selectfont}
-\DeclareRobustCommand\sbseries{\fontseries{sb}\selectfont}
-\DeclareRobustCommand\ltseries{\fontseries{l}\selectfont}
-\DeclareRobustCommand\clseries{\fontseries{cl}\selectfont}
+% Official style guide suggests Lora as serif font, but this font is tricky in Latex.
+% Merriweather is the serif font that Lato's designer Łukasz Dziedzic recommends to pair with Lato and
+% the SciLifeLab website uses Poppins anyway (so the designers do themselves not stick to their own choice)
+\usepackage{merriweather} 
+\usepackage[defaultsans]{lato}
 
-\DeclareTextFontCommand{\texteb}{\ebseries}
+\DeclareRobustCommand\bxseries{\sffamily \fontseries{bx}\selectfont}  % bold-extended
+\DeclareRobustCommand\sbseries{\sffamily \fontseries{sb}\selectfont}  % semi-bold
+\DeclareRobustCommand\cseries{ \sffamily \fontseries{c}\selectfont}  % condensed
+
+\DeclareTextFontCommand{\textbx}{\bxseries}
 \DeclareTextFontCommand{\textsb}{\sbseries}
-\DeclareTextFontCommand{\textlt}{\ltseries}
-\DeclareTextFontCommand{\textcl}{\clseries}
+\DeclareTextFontCommand{\textc}{\cseries}
 
 \usepackage{ragged2e}
 \RaggedRight{}            	% Flattersatz
@@ -36,7 +38,7 @@
 \KOMAoptions{
 enlargefirstpage=true,
 DIV=calc,           % Optimiert Verhältnis zwischen Text und Whitespace mit DIV=calc, A4 default=10
-fontsize=12,        % 12 ist scrlttr2-Standard
+fontsize=11.5,        % 12 ist scrlttr2-Standard
 parskip=half,       % Absätze mit Leerzeile ohne Einrückung
 backaddress=plain,  % Rücksendeadresse nicht unterstrichen
 foldmarks=off,		% Keine Faltmarken
@@ -51,23 +53,28 @@ fromlogo=true    	% display SciLifeLab Logo
 %
 % Sender, generated from external data
 %
-\setkomavar{fromname}{\scilifelabFirstname{}~\scilifelabLastname{}}               % Name
-\setkomavar{fromaddress}{\scilifelabStreet{}\\{}\scilifelabPostalcode{}~\scilifelabCity{}} % Adresse
+\setkomavar{fromname}{\scilifelabPrefix{}~\scilifelabFirstname{}~\scilifelabLastname{}}               % Name
+\setkomavar{fromaddress}{\scilifelabDeliveryAddress{}\\{}\scilifelabDeliveryPostalcode{}~\scilifelabDeliveryCity{}} % Adresse
 \setkomavar{fromphone}{\scilifelabPhone{}}                           	% Telefonnummer
 \setkomavar{fromemail}{\scilifelabEmail{}}                            	% E-Mail-Adresse
-\setkomavar{place}{\scilifelabCity{}}                                 	% Ort
+\setkomavar{place}{\scilifelabVisitingCity{}}                                 	% Ort
 \setkomavar{backaddressseparator}{,~}                        	% Trennung der Rücksendeadressbestandteile statt ","
 \setkomavar{signature}{}										% Removes Name after closing
 
 \renewcommand*{\raggedsignature}{\raggedright}  % Signatur wird bündig gesetzt
 \@setplength{sigbeforevskip}{0em}           	% Keine Leerzeile zwischen Gruß und Signature
-
+\@setplength{locwidth}{9cm} % enlarges location
 
 %---------------------------------------------------------------------------
 % Colors inspired by moderncv
 %---------------------------------------------------------------------------
-\definecolor{color0}{rgb}{0,0,0}             % Schwarz (normale Schrift)
-\definecolor{color2}{rgb}{0.45,0.45,0.45}    % Dunkles Grau (zum Abheben)
+\definecolor{scLime}{HTML}{a7c947}
+\definecolor{scTeal}{HTML}{045c64}
+\definecolor{scAqua}{HTML}{4c979f}
+\definecolor{scGrape}{HTML}{491f53}
+\definecolor{scLGray}{HTML}{e5e5e5}
+\definecolor{scMGray}{HTML}{a6a6a6}
+\definecolor{scDGray}{HTML}{3f3f3f}
 
 %---------------------------------------------------------------------------
 % Custom Letter Head
@@ -79,32 +86,48 @@ fromlogo=true    	% display SciLifeLab Logo
 \begin{flushright}
 {
 \usekomavar{fromlogo}
-\hfill
-\@ifundefined{scilifelabSecondaryLogo}{}{\includegraphics[height=1.5cm]{\scilifelabSecondaryLogo}\\}%
-	\textsb{%
-	\color{color2!50}\scilifelabFirstname{}~\color{color2}\scilifelabLastname{}%
-}}\\\vspace{0.1cm}%
+\hfill\@ifundefined{scilifelabSecondaryLogo}{}{\includegraphics[height=1.5cm]{\scilifelabSecondaryLogo}\\\vspace{0.5cm}}%
+\textbx{%
+	\color{scGrape}\scilifelabPrefix{}~\scilifelabFirstname{}~\scilifelabLastname{}\scilifelabSuffix{}%
+}}\\%
 {
-\color{color2}\scilifelabStreet{}~|~\scilifelabPostalcode{}~\scilifelabCity{}%
+\color{scMGray}
+\textsb{\scilifelabPosition{}}
 }
 \end{flushright}
 }
 %
 \setkomavar{location}{
 \begin{flushright}
-
-\color{color0}
-\@ifundefined{scilifelabReference}{}{Kundennr.\,:~\scilifelabReference{}\\}%
-
+{\color{scMGray}
+\@ifundefined{scilifelabAffiliation}{}{\textc{\scilifelabAffiliation{}\\}}%
+\@ifundefined{scilifelabDepartment}{}{\textc{\scilifelabDepartment{}}\\}%
+}%
 \end{flushright}
 }
 %
 \setkomavar{firstfoot}{
+\footnotesize
 \vspace{-1cm}%
 \begin{flushright}%
-\color{color2}%
-\@ifundefined{scilifelabPhone}{}{~|~\Mobilefone~\scilifelabPhone{}}%
+{\color{scMGray} \textsb{Visiting address:~}
+\@ifundefined{scilifelabFloor}{}{\textc{SciLifeLab, \scilifelabFloor{}}}%
+\@ifundefined{scilifelabVisitingAddress}{}{\textc{~|~\scilifelabVisitingAddress{}}}%
+\@ifundefined{scilifelabVisitingPostalcode}{}{\textc{~|~\scilifelabVisitingPostalcode{}}}%
+\@ifundefined{scilifelabVisitingCity}{}{\textc{\scilifelabVisitingCity{}\\}}%
+}%
+{\color{scMGray} \textsb{Delivery address:~}
+\@ifundefined{scilifelabDeliveryAddress}{}{\textc{\scilifelabPrefix{}~\scilifelabFirstname{}~\scilifelabLastname{}\scilifelabSuffix{}}}%
+\@ifundefined{scilifelabDeliveryAddress}{}{\textc{~|~\scilifelabDeliveryAddress{}}}%
+\@ifundefined{scilifelabDeliveryPostalcode}{}{\textc{~|~\scilifelabDeliveryPostalcode{}}}%
+\@ifundefined{scilifelabDeliveryCity}{}{\textc{\scilifelabDeliveryCity{}\\}}%
+}%
+{\color{scLime}% \sffamily
+\@ifundefined{scilifelabPhone}{}{\Telefon~\scilifelabPhone{}}%
+\@ifundefined{scilifelabMobile}{}{~|~\Mobilefone~\scilifelabMobile{}}%
 \@ifundefined{scilifelabEmail}{}{~|~\Letter~\scilifelabEmail{}}%
+\@ifundefined{scilifelabWeb}{}{~|~\Mundus~\scilifelabWeb{}}%
+}%
 \end{flushright}%
 }
 
