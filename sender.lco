@@ -4,10 +4,10 @@
 \newcommand{\scilifelabLastname}{Brunbjörn}
 \newcommand{\scilifelabPrefix}{Dr.}
 \newcommand{\scilifelabSuffix}{}
-\newcommand{\scilifelabPosition}{Bioinformatician}
-\newcommand{\scilifelabAffiliation}{Applications Development}
+\newcommand{\scilifelabPosition}{Specialistdietist för Honung}
+\newcommand{\scilifelabAffiliation}{Avdelningen för gastroenterologi}
 \newcommand{\scilifelabDepartment}{Höga Berget högskolan}
-\newcommand{\scilifelabFloor}{Alfa~3}
+\newcommand{\scilifelabFloor}{Omega~1}
 \newcommand{\scilifelabVisitingAddress}{Tomtebodavägen 23A}
 \newcommand{\scilifelabVisitingPostalcode}{171 65}
 \newcommand{\scilifelabVisitingCity}{Solna}
@@ -20,5 +20,4 @@
 \newcommand{\scilifelabWeb}{www.scilifelab.se}
 \newcommand{\scilifelabLogo}{scilifelablogo.png}
 %\newcommand{\scilifelabSecondaryLogo}{ngilogo.png}
-
-\newcommand{\scilifelabReference}{max@mustermann.de}
+\newcommand{\scilifelabReference}{Honung}
